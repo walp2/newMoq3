@@ -1,0 +1,349 @@
+/* ==========================================
+   1. تعريف الخطوط المحلية (Offline Fonts)
+   ========================================== */
+@font-face {
+  font-family: 'NormalFont';
+  src: url('../fonts/Tajawal-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Monocraft';
+  src: url('../fonts/Monocraft.ttf') format('truetype');
+}
+
+/* ==========================================
+   2. الإعدادات العامة
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'NormalFont', system-ui, sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #ffffff;
+  background: url('../assets/bg.jpg') center/cover no-repeat fixed;
+  position: relative;
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 0;
+}
+
+/* ==========================================
+   3. زر تغيير اللغة
+   ========================================== */
+.lang-switch-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+[dir="ltr"] .lang-switch-container {
+  right: auto;
+  left: 20px;
+}
+
+.lang-btn {
+  background: rgba(15, 18, 28, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  border-color: #00f2fe;
+  color: #00f2fe;
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   4. تصميم البطاقة الرئيسي
+   ========================================== */
+.card-container {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+.card {
+  width: 380px;
+  background: rgba(15, 18, 28, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 242, 254, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 242, 254, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.3);
+}
+
+/* الصورة الشخصية */
+.avatar-wrapper {
+  position: relative;
+  width: 105px;
+  height: 105px;
+  margin: 0 auto 16px auto;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.card:hover .avatar-img {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.online-status {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 18px;
+  height: 18px;
+  background-color: #00ff88;
+  border: 3px solid #0f121c;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+[dir="ltr"] .online-status {
+  right: auto;
+  left: 5px;
+}
+
+/* تحول الاسم بالـ Monocraft */
+.name-box {
+  margin-bottom: 12px;
+}
+
+.main-name {
+  font-size: 30px;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  font-family: 'Monocraft', monospace;
+}
+
+.name-text {
+  display: inline-block;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-family: 'Monocraft', monospace;
+}
+
+.main-name::after {
+  content: attr(data-hover);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  white-space: nowrap;
+  background: linear-gradient(45deg, #00f2fe, #4facfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+  font-weight: 800;
+  font-family: 'Monocraft', monospace;
+}
+
+.main-name:hover .name-text {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.main-name:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.sub-handle {
+  font-size: 13px;
+  color: #00f2fe;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  font-family: 'Monocraft', monospace;
+}
+
+.bio {
+  font-size: 13px;
+  color: #cccccc;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+/* الروابط والأزرار */
+.quick-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.link-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #00f2fe;
+  transform: translateY(-2px);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.service-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.service-card i {
+  font-size: 18px;
+  color: #00f2fe;
+}
+
+.service-card strong {
+  display: block;
+  font-size: 12px;
+}
+
+.service-card small {
+  font-size: 10px;
+  color: #888;
+  font-family: 'Monocraft', monospace;
+}
+
+.service-card:hover {
+  border-color: #00f2fe;
+  background: rgba(0, 242, 254, 0.08);
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  background: linear-gradient(45deg, #00f2fe, #4facfe);
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+  transition: 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 25px rgba(0, 242, 254, 0.5);
+}
+
+/* شريط الأذكار */
+.athkar-bar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(15, 18, 28, 0.85);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  border-radius: 50px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+[dir="ltr"] .athkar-bar {
+  right: auto;
+  left: 20px;
+}
+
+.athkar-icon {
+  color: #00f2fe;
+  font-size: 16px;
+}
+
+.athkar-content {
+  font-size: 13px;
+  color: #e0e0e0;
+  min-width: 200px;
+  text-align: center;
+}
+
+.athkar-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.athkar-controls button {
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 5px;
+  transition: 0.2s;
+}
+
+.athkar-controls button:hover {
+  color: #00f2fe;
+}

@@ -4,38 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WalP (WaleedPro)</title>
+  
+  <!-- أيقونة التبويب المحلية -->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- ملف التنسيق -->
   <link rel="stylesheet" href="css/style.css" />
+  
+  <!-- أيقونات FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
   <div class="bg-overlay"></div>
 
-  <!-- 🌐 زر تغيير اللغة في الأعلى -->
+  <!-- 🌐 زر تحويل اللغة -->
   <div class="lang-switch-container">
     <button id="langToggleBtn" class="lang-btn" onclick="toggleLanguage()">
-      <i class="fa-solid fa-globe"></i> <span id="langBtnText">English</span>
+      <i class="fa-solid fa-globe"></i>
+      <span id="langBtnText">English</span>
     </button>
   </div>
 
   <main class="card-container">
     <div class="card">
       
+      <!-- الصورة الشخصية -->
       <div class="avatar-wrapper">
         <img src="assets/avatar.jpg" alt="WalP" class="avatar-img" />
-        <div class="online-status"></div>
+        <div class="online-status" title="Online"></div>
       </div>
 
+      <!-- الاسم مع التأثير عند الـ Hover -->
       <div class="name-box">
-        <h1 class="main-name" id="mainName" data-hover="Waleed Pro">
+        <h1 class="main-name" data-hover="Waleed Pro">
           <span class="name-text">WalP</span>
         </h1>
         <p class="sub-handle">@walp.pro</p>
       </div>
 
+      <!-- الوصف -->
       <p class="bio" data-i18n="bio">لاعب ومطور • مؤسس شبكة WalP</p>
 
+      <!-- روابط الشبكة -->
       <div class="quick-links">
         <a href="https://discord.gg" target="_blank" class="link-btn">
           <i class="fa-brands fa-discord"></i>
@@ -47,6 +58,7 @@
         </a>
       </div>
 
+      <!-- شبكة الخدمات والسيرفرات -->
       <div class="services-grid">
         <a href="http://mc.walp.pro" class="service-card">
           <i class="fa-solid fa-cube"></i>
@@ -64,6 +76,7 @@
         </a>
       </div>
 
+      <!-- زر التواصل -->
       <div class="contact-section">
         <a href="/contact" class="contact-btn">
           <i class="fa-solid fa-paper-plane"></i>
@@ -74,17 +87,19 @@
     </div>
   </main>
 
+  <!-- شريط الأذكار -->
   <div class="athkar-bar" id="athkarBar">
     <div class="athkar-icon"><i class="fa-solid fa-kaaba"></i></div>
     <div class="athkar-content">
       <span id="athkarText">سبحان الله وبحمده، سبحان الله العظيم</span>
     </div>
     <div class="athkar-controls">
-      <button onclick="nextThikr()"><i class="fa-solid fa-rotate-right"></i></button>
-      <button onclick="toggleAthkar()"><i class="fa-solid fa-xmark"></i></button>
+      <button onclick="nextThikr()" title="التالي"><i class="fa-solid fa-rotate-right"></i></button>
+      <button onclick="toggleAthkar()" title="إغلاق"><i class="fa-solid fa-xmark"></i></button>
     </div>
   </div>
 
+  <!-- ملف السكريبت -->
   <script src="js/script.js"></script>
 </body>
 </html>
